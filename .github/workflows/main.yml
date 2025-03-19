@@ -38,16 +38,14 @@ jobs:
       run: |
         black . 
         
-    - name: Install dependencies
+    - name: Install dependencies and stubs
       run: |
-        pip install \
-          types-sqlalchemy \
-          types-pydantic \
-          types-fastapi \
-          types-psycopg2 \
-          types-orjson \
-          types-python-dateutil
+        pip install pydantic mypy types-sqlalchemy sqlalchemy-stubs types-fastapi
           
+    # - name: Run mypy
+    #   run: |
+        
+    #     mypy /home/runner/work/test/test/.github/workflows/main.py
+
     - name: Run mypy
-      run: |
-        mypy /home/runner/work/test/test/.github/workflows/main.py
+      run: mypy --config-file mypy.ini .
