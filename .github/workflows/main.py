@@ -1,19 +1,21 @@
+from typing import List
+
 from fastapi import FastAPI, HTTPException
+from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from sqlalchemy.orm import selectinload
-from sqlalchemy.ext.asyncio import AsyncSession
-from typing import List
 
 import models
 import schemas
-from database import engine, async_session_maker
+from database import async_session_maker, engine
+
 
 # Обработчики событий через lifespan
 async def lifespan(app: FastAPI):
     async with engine.begin() as conn:
         await conn.run_sync(models.Base.metadata.create_all)
     yield
-    await engine.dispose()  
+    await engine.dispose()
 
 
 app = FastAPI(lifespan=lifespan,title="Кулинарная книга API",
