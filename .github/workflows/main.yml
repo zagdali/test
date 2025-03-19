@@ -40,7 +40,7 @@ jobs:
         
     - name: Install dependencies and stubs
       run: |
-        pip install pydantic mypy types-sqlalchemy sqlalchemy-stubs types-fastapi
+        pip install pydantic mypy types-sqlalchemy sqlalchemy-stubs
           
     # - name: Run mypy
     #   run: |
