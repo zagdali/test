@@ -13,7 +13,7 @@ async def lifespan(app: FastAPI):
     async with engine.begin() as conn:
         await conn.run_sync(models.Base.metadata.create_all)
     yield
-    await engine.dispose()
+    await engine.dispose()  
 
 
 app = FastAPI(lifespan=lifespan,title="Кулинарная книга API",
