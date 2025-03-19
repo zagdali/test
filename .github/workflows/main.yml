@@ -37,7 +37,17 @@ jobs:
     - name: Run black
       run: |
         black . 
-
+        
+    - name: Install dependencies
+      run: |
+        pip install \
+          types-sqlalchemy \
+          types-pydantic \
+          types-fastapi \
+          types-psycopg2 \
+          types-orjson \
+          types-python-dateutil
+          
     - name: Run mypy
       run: |
         mypy /home/runner/work/test/test/.github/workflows/main.py
