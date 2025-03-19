@@ -40,4 +40,4 @@ jobs:
 
     - name: Run mypy
       run: |
-        mypy main.py
+        mypy /home/runner/work/test/test/.github/workflows/main.py
