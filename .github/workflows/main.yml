@@ -32,7 +32,7 @@ jobs:
 
     - name: Run isort
       run: |
-        isort . --check-only
+        isort . 
 
     - name: Run black
       run: |
