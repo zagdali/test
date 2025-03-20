@@ -40,14 +40,16 @@ jobs:
              
     - name: Run mypy
       run: |
+        # Проверяем наличие .py файлов
+        if ! find . -name "*.py" -print -quit | grep -q '.'; then
+          echo "No .py files found in the repository"
+          exit 0
+        fi
+
+        # Запускаем mypy
         if test -f mypy.ini; then
           echo "Using mypy.ini configuration"
-          if [ -d "." ]; then
-            mypy --config-file mypy.ini test/
-          fi
-          if [ -d "test/.github/workflows" ]; then
-            mypy --config-file mypy.ini test/.github/workflows
-          fi
+          mypy --config-file mypy.ini .
         else
           echo "No configuration file found, running mypy without config"
           mypy .
