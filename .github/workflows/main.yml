@@ -56,7 +56,7 @@ jobs:
        # Запускаем mypy с правильным путем к директории с .py файлами
        if test -f /home/runner/work/test/test/.github/workflows/mypy.ini; then
          echo "Using mypy.ini configuration"
-         mypy --config-file /home/runner/work/test/test/.github/workflows/mypy.ini /home/runner/work/test/test/.github/workflows/
+         mypy --config-file /home/runner/work/test/test/.github/workflows/mypy.ini /home/runner/work/test/test/.github/workflows/ --install-types --non-interactive
        else
          echo "No configuration file found, running mypy without config"
          mypy /home/runner/work/test/test/.github/workflows/
