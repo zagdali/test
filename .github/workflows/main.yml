@@ -48,7 +48,7 @@ jobs:
       run: |
        
        # Проверяем наличие .py файлов в нужной директории
-       if ! find . -name "*.py" -print -quit | grep -q '.'; then
+       if ! find /home/runner/work/test/test/.github/workflows/ -name "*.py" -print -quit | grep -q '.'; then
          echo "No .py files found in the repository"
          exit 0
        fi
@@ -56,9 +56,9 @@ jobs:
        # Запускаем mypy с правильным путем к директории с .py файлами
        if test -f /home/runner/work/test/test/.github/workflows/mypy.ini; then
          echo "Using mypy.ini configuration"
-         mypy --config-file /home/runner/work/test/test/.github/workflows/mypy.ini .
+         mypy --config-file /home/runner/work/test/test/.github/workflows/mypy.ini /home/runner/work/test/test/.github/workflows/
        else
          echo "No configuration file found, running mypy without config"
-         mypy .
+         mypy /home/runner/work/test/test/.github/workflows/
        fi
 
