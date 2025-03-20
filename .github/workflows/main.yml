@@ -27,8 +27,7 @@ jobs:
 
     - name: Run flake8
       run: |
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics --max-complexity=10 --max-line-length=127 --exit-zero
 
     - name: Run isort
       run: |
@@ -41,11 +40,6 @@ jobs:
     - name: Install dependencies and stubs
       run: |
         pip install pydantic mypy types-sqlalchemy sqlalchemy-stubs
-          
-    # - name: Run mypy
-    #   run: |
-        
-    #     mypy /home/runner/work/test/test/.github/workflows/main.py
-
+             
     - name: Run mypy
       run: mypy --config-file mypy.ini .
