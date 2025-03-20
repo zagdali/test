@@ -42,4 +42,11 @@ jobs:
         pip install pydantic mypy types-sqlalchemy sqlalchemy-stubs
              
     - name: Run mypy
-      run: mypy --config-file mypy.ini .
+      run: |
+        if test -f mypy.ini; then
+          echo "Using mypy.ini configuration"
+          mypy --config-file mypy.ini .
+        else
+          echo "No configuration file found, running mypy without config"
+          mypy .
+        fi
