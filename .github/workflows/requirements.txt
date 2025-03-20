@@ -1,7 +1,17 @@
-fastapi
-black==21.12b0
-flake8==4.0.1
-flake8-bugbear==22.1.11
+# Основные зависимости
+fastapi==0.95.0
+
+# Форматирование и проверка кода
+black==23.10.0
+flake8==6.1.0
+flake8-bugbear==23.9.7
 flake8-pie==0.15.0
-isort==5.9.3
-mypy==0.931
+isort==5.12.0
+
+# Статический анализ типов
+mypy==1.5.1
+
+# База данных
+sqlalchemy==2.0.21
+psycopg2-binary==2.9.9  # Для PostgreSQL
+asyncpg==0.27.0       # Для асинхронного PostgreSQL (если требуется)
