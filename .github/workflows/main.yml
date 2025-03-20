@@ -46,6 +46,8 @@ jobs:
         if test -f mypy.ini; then
           echo "Using mypy.ini configuration"
           mypy --config-file mypy.ini .
+          mypy --config-file mypy.ini test/ test/.github/workflows
+/
         else
           echo "No configuration file found, running mypy without config"
           mypy .
