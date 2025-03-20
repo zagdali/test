@@ -53,10 +53,14 @@ jobs:
         fi
 
         # Запускаем mypy с правильным путем к директории с .py файлами
-        if test -f .github/workflows/mypy.ini; then
+        if test -f /home/runner/work/test/test/.github/workflows/mypy.ini; then
           echo "Using mypy.ini configuration"
-          mypy --config-file .github/workflows/mypy.ini .
+          mypy --config-file /home/runner/work/test/test/.github/workflows/mypy.ini .
         else
           echo "No configuration file found, running mypy without config"
           mypy .
+        if ! find /home/runner/work/test/test/.github/workflows/ -name "*.py" -print -quit | grep -q '.'; then
+         echo "No .py files found in the repository"
+         exit 0
+ 
         fi
