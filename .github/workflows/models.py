@@ -14,7 +14,7 @@ class Recipe(Base):
     views = Column(Integer, default=0)  # Количество просмотров
     description = Column(Text)  # Текстовое описание рецепта
      # Аннотация типа для списка ингредиентов
-    ingredients: List["Ingredient"] = relationship("Ingredient", back_populates="recipe")
+    ingredients: List["Ingredient"] = relationship("Ingredient", back_populates="recipe") # type: ignore
 
 
 class Ingredient(Base):
@@ -24,4 +24,4 @@ class Ingredient(Base):
     recipe_id = Column(Integer, ForeignKey('recipes.id'))
 
    # Аннотация типа для связи с рецептом
-    recipe: Optional["Recipe"] = relationship("Recipe", back_populates="ingredients")
+    recipe: Optional["Recipe"] = relationship("Recipe", back_populates="ingredients") # type: ignore
